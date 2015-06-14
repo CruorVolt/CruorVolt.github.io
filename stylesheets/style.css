@@ -1,0 +1,46 @@
+body {
+  background-color: #003e80;
+  font-family: sans-serif;
+}
+
+a:link {
+  color: #FFFFFF;
+  text-decoration: none;
+  font-family: "Verdana", "Geneva", sans-serif;
+}
+
+a:visited {
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #FF9900;
+  text-decoration: underline;
+}
+
+a:active {
+  text-decoration: underline;
+}
+
+#left, #right {
+    position: relative;
+    float: left;
+    margin: 0 5px 0 0;
+    border: none;
+    width: 200px;
+    height: 410px;
+    overflow: hidden;
+}
+
+div.panel {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: none;
+}
+
+img.tile {
+    height: 80px;
+    width: 180px;
+}
