@@ -23,12 +23,24 @@ a:active {
   text-decoration: underline;
 }
 
-#left, #right {
+#left {
     position: relative;
     float: left;
-    margin: 0 5px 0 0;
+    margin-right: 5px;
+    margin-left: 50px;
     border: none;
-    width: 200px;
+    width: 185px;
+    height: 410px;
+    overflow: hidden;
+}
+
+#right {
+    position: relative;
+    float: left;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    border: none;
+    width: 60%;
     height: 410px;
     overflow: hidden;
 }
@@ -43,4 +55,6 @@ div.panel {
 img.tile {
     height: 80px;
     width: 180px;
+    margin-top: 2px;
+    margin-bottom: 2px;
 }
