@@ -1,6 +1,9 @@
 body {
   background-color: #003e80;
   font-family: sans-serif;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
 }
 
 a:link {
@@ -24,37 +27,37 @@ a:active {
 }
 
 #left {
-    position: relative;
-    float: left;
-    margin-right: 5px;
-    margin-left: 50px;
-    border: none;
-    width: 185px;
-    height: 410px;
-    overflow: hidden;
+  position: relative;
+  float: left;
+  margin-right: 5px;
+  margin-left: 15%;
+  border: none;
+  width: 185px;
+  height: 410px;
+  overflow: hidden;
 }
 
 #right {
-    position: relative;
-    float: left;
-    margin-top: 2px;
-    margin-bottom: 2px;
-    border: none;
-    width: 60%;
-    height: 410px;
-    overflow: hidden;
+  position: relative;
+  float: left;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  border: none;
+  width: 60%;
+  height: 410px;
+  overflow: hidden;
 }
 
 div.panel {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    display: none;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  display: none;
 }
 
 img.tile {
-    height: 80px;
-    width: 180px;
-    margin-top: 2px;
-    margin-bottom: 2px;
+  height: 80px;
+  width: 180px;
+  margin-top: 2px;
+  margin-bottom: 2px;
 }
