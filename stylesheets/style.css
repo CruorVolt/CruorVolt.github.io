@@ -57,7 +57,7 @@ div.panel {
   width: 100%;
   display: none;
   border: none;
-  background: #00254D;
+  background-color: #00254D;
   padding-top: 20px;
   padding-bottom: 10px;
 }
@@ -73,3 +73,15 @@ img {
   border: 2px solid #668BB3;
 }
 
+iframe {
+  width: 90%;
+  height: 90%;
+  background-color: #00254D;
+
+  text-color: white;
+  color: white;
+  font-family: sans-serif;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
