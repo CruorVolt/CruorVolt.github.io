@@ -14,25 +14,27 @@ img {
 }
 
 a:link {
-  text-color: black;
-  background-color: #FF9900;
-  padding: 5px 5px 5px 5px;
-  margin-top: 50px;
-  margin-bottom: 50px;
+  color: white;
+  background-color: #003e80;
   text-decoration: none;
-  border: 2px solid #668BB3;
+  display: inline-block;
+  padding: 5px 5px 5px 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border: 2px solid #FFFFFF;
 }
 
 a:visited {
-  color: black;
+  color: white;
   text-decoration: none;
 }
 
 a:hover {
-  color: black;
-  text-decoration: underline;
+  color: white;
+  text-decoration: none;
 }
 
 a:active {
-  text-decoration: underline;
+  color: white;
+  text-decoration: none;
 }
