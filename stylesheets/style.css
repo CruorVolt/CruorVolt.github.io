@@ -1,4 +1,5 @@
 body {
+  color: #FFFFFF;
   background-color: #003e80;
   font-family: sans-serif;
   margin-left: auto;
@@ -33,26 +34,32 @@ a:active {
   margin-left: 15%;
   border: none;
   width: 185px;
-  height: 410px;
+  height: 434px;
   overflow: hidden;
 }
 
 #right {
+  color: #FFFFFF;
   position: relative;
   float: left;
   margin-top: 2px;
   margin-bottom: 2px;
   border: none;
   width: 50%;
-  height: 410px;
+  height: 432px;
   overflow: hidden;
 }
 
 div.panel {
   position: absolute;
+  text-align: center;
   height: 100%;
   width: 100%;
   display: none;
+  border: none;
+  background: #00254D;
+  padding-top: 20px;
+  padding-bottom: 10px;
 }
 
 img.tile {
@@ -62,6 +69,7 @@ img.tile {
   margin-bottom: 2px;
 }
 
-img.border {
-  border: 5px solid green;
+img {
+  border: 2px solid #668BB3;
 }
+
