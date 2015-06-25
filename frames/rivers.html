@@ -1,0 +1,37 @@
+<link rel="stylesheet" type="text/css" href="../stylesheets/frame.css">
+<base target="_parent" />
+
+A tool for modeling the growth of river networks over time. 
+This program implements the algorithm described by Robert Leheny 
+and Sidney Nagel in their 1993 publication, Model for the Evolution of River Networks. 
+
+
+Process:
+
+Modeling begins with a smooth inclined plane of topographical elevation data and 
+begins a water pathway at a random point on the plane. The water flows to neighboring 
+points, with the probability of moving to a given point i defined as:  
+
+Where E is a topographical constant (modeled in the GUI by the Topography scale) 
+and Δh is the elevation difference between the current point and point i. 
+The probabilities of each of the four neighboring points is converted to a fraction 
+of their sum for their respective percentage probabilities. This equation 
+gives the water a larger proportional probability to travel towards adjacent 
+points of greater downward slope, and restricts the water from flowing 
+to points with higher elevation. After the water has reached the bottom of 
+the plane (the plane wraps to itself horizontally) its path is eroded by 
+reducing the elevation values it has passed over by some defined erosion depth 
+(modeled by the GUI's erosion scale). If the slope between any two points on the 
+new landscape is greater than some defined soil consistency constant the procedure 
+evens the slope between those points to simulate a soil avalanche. 
+A single erosion path will not remove elevation from a single point more than once. 
+
+The placement and erosion procedure can be repeated to produce increasingly complex landscapes.
+
+
+                                             
+
+
+The initial drafts of the generation algorithm were constructed as part 
+of the University of Montana Computer Science curriculum. 
+Python source code requires numpy and matplotlib libraries.
