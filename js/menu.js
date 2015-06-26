@@ -20,3 +20,7 @@ jQuery(function($) {
     });
 
 });
+
+$(document).ready(function() {
+	$("div#left").find("a#defaultPanel").trigger('click');
+});

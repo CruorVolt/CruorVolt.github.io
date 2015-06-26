@@ -14,6 +14,26 @@ img {
 }
 
 a:link {
+  color: #FFFFFF;
+  text-decoration: none;
+  font-family: sans-serif;
+}
+
+a:visited {
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #FF9900;
+  text-decoration: underline;
+}
+
+a:active {
+  text-decoration: underline;
+}
+
+a.block:link {
   color: white;
   background-color: #003e80;
   text-decoration: none;
@@ -24,17 +44,17 @@ a:link {
   border: 2px solid #FFFFFF;
 }
 
-a:visited {
+a.block:visited {
   color: white;
   text-decoration: none;
 }
 
-a:hover {
+a.block:hover {
   color: white;
   text-decoration: none;
 }
 
-a:active {
+a.block:active {
   color: white;
   text-decoration: none;
 }
