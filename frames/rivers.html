@@ -1,11 +1,18 @@
 <link rel="stylesheet" type="text/css" href="../stylesheets/frame.css">
 <base target="_parent" />
 
+<div style='text-align:center;'>
 A tool for modeling the growth of river networks over time. 
-This program implements the algorithm described by Robert Leheny 
-and Sidney Nagel in their 1993 publication, Model for the Evolution of River Networks. 
+<img src="../img/rivers.png" style='width:40%;'>
+</div>
 
-
+This program implements the process described in:
+<br><br>
+<div style='font-family:serif; margin-left:20px;'>
+R. L. Leheny and S. R. Nagel, "Model for the evolution of river
+networks," Phys. Rev. Lett., vol. 71, pp. 1470-1473, Aug 1993.
+</div>
+<br>
 Process:
 
 Modeling begins with a smooth inclined plane of topographical elevation data and 
@@ -27,10 +34,6 @@ evens the slope between those points to simulate a soil avalanche.
 A single erosion path will not remove elevation from a single point more than once. 
 
 The placement and erosion procedure can be repeated to produce increasingly complex landscapes.
-
-
-                                             
-
 
 The initial drafts of the generation algorithm were constructed as part 
 of the University of Montana Computer Science curriculum. 
