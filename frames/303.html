@@ -1,7 +1,126 @@
+<script type="text/javascript" src="../js/jquery-1.11.3.min.js" ></script>
+<script type="text/javascript" src="../js/menu.js" ></script>
 <link rel="stylesheet" type="text/css" href="../stylesheets/frame.css">
+
 <base target="_parent" />
+<script type="text/javascript">
+
+var start;
+var tweetEvents = [];
+
+start = function() {
+	console.log("Started");
+	if (!document.getElementById("displayCanvas")) {
+		console.log("NOPE");
+		return; //No need for streaming on this page
+	}
+
+	var dialInterval;     //The setInterval for controlling dialing animation
+	var dialIndex = 0;    //The current character displayed by dialing animation
+
+	var init_message = "#DIALING.....".split("");
+
+	var canvas = document.getElementById("displayCanvas");
+	var context = canvas.getContext("2d");
+
+	canvas.height = window.innerHeight;
+	canvas.width = window.innerWidth;
+
+	var size = 13;
+	var alpha = size / 200
+	var rows = canvas.height / size;
+	var cols = canvas.width / size;
+
+	//Write the loading ticker
+	function dial() {
+		index = dialIndex % init_message.length;
+		context.fillStyle = "rgba(0, 0, 155, 0.3)"; //Background color and fadeout speed
+		context.fillRect(0, 0, canvas.width, canvas.height);
+		context.fillStyle = getTextColor();
+		context.font = (size+5) + "px ocramedium";
+		context.fillText(init_message[index], (canvas.width / 2) - (init_message.length / 2 * size) + (index * size), canvas.height / 3); 
+		dialIndex += 1;
+	}
+
+	//Write a line incrementally down the screen
+	function paint()
+	{
+		//Background is colored and translucent
+		context.fillStyle = "rgba(0, 0, 0, " + alpha + ")"; //Background color and fadeout speed
+		context.fillRect(0, 0, canvas.width, canvas.height);
+		
+		context.fillStyle = "#0F0"; //green
+		context.font = size + "px ocramedium";
+
+		for(var i = 0; i < lines.length; i++) {
+			var tweet = tweets[i]
+			var currentChar = tweet[lines[i] % tweet.length];
+			var previousChar = tweet[(lines[i]-1) % tweet.length];
+
+			if (vertical) {
+				context.fillStyle = "#FFF"; //white
+				context.fillText(currentChar, i*size, (lines[i]*size)+size); //Write newest char illuminated
+				context.fillStyle = getTextColor();
+				context.fillText(previousChar, i*size, ((lines[i]-1)*size)+size); //Rewrite previous char in green
+
+				//Randomly stagger resetting the line
+				if(lines[i]*size > canvas.height && Math.random() > restartThreshhold) {
+					lines[i] = 0;
+					tweets[i] = tweetEvents[Math.floor(Math.random() * tweetEvents.length)];
+				}
+			} else {
+				context.fillStyle = "#FFF"; //white
+				context.fillText(currentChar, lines[i]*size, i*size); //Write newest char illuminated
+				context.fillStyle = getTextColor();
+				context.fillText(previousChar, (lines[i]-1)*size, i*size); //Rewrite previous char in green
+
+				//Randomly stagger resetting the line
+				if(lines[i]*size > canvas.width && Math.random() > restartThreshhold) {
+					lines[i] = 0;
+					tweets[i] = tweetEvents[Math.floor(Math.random() * tweetEvents.length)];
+				}
+			}
+			
+			//incrementing scrolling coordinate
+			lines[i]++;
+		}
+	}
+
+	//get the hex string for a random shade of light green
+	function getTextColor() {
+		var hex = "ABCDEF".split("");
+		var hue = Math.floor((Math.random() * 25) + 230);
+		return "rgb(" + hue + ", " + hue + ", " + hue + ")";
+	}
+
+	function canvasSize(scroll_dir) {
+		if (vertical) {
+			return (scroll_dir) ? cols : rows;
+		} else {
+			return (scroll_dir) ? rows : cols;
+		}
+	}
+
+	dialInterval = setInterval(dial, 150);
+
+}
+
+$(document).ready(start);
+
+</script>
+
+<body>
+<canvas name = "canvas" id="displayCanvas" style="width:100%; height:100%;"> </canvas>
+
 A Twitter visualizer from a realtime stream of random tweets. 
+
 <div style="text-align:center;">
+
 <a class="block" href="https://room-303.herokuapp.com">Connect</a>
+
 <a class="block" href="https://github.com/CruorVolt/room303">Project Source</a>
+
+
 </div>
+
+</body>
