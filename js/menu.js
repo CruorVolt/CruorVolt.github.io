@@ -4,6 +4,11 @@ jQuery(function($) {
 
         var $target = $($(this).attr('href')),
             $other = $target.siblings('.active');
+
+	//Start animation in canvas if this is panel 303
+        if ($(this).attr('href') == '#panel303') {
+	    start();
+	}
         
         if (!$target.hasClass('active')) {
             $other.each(function(index, self) {
@@ -20,13 +25,13 @@ jQuery(function($) {
     });
 
 
+    //Give the life image a hover animation
     var src = $('img#life_img').attr('src');
     $('img#life_img').hover(function() {
         $(this).attr('src', src.replace('img/shuttle_static.gif', 'img/shuttle.gif'));
     }, function(){
       $(this).attr('src', src);
     });
-
 
 });
 
