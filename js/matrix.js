@@ -1,12 +1,14 @@
 var start;
 var tweetEvents = [];
 var dialInterval;     //The setInterval for controlling dialing animation
+var paintInterval;
+var lines = [];
+var tweets = [];
+var restartThreshhold = 0.97; 
 
 start = function() {
 	clearInterval(dialInterval);
-	console.log("Started");
 	if (!document.getElementById("displayCanvas")) {
-		console.log("NOPE");
 		return; //No need for streaming on this page
 	}
 
@@ -22,41 +24,88 @@ start = function() {
 	context.fillStyle = "rgba(90, 37, 77, 1.0)"; //Blank to start
 
 	var size = 30;
+	context.font = (size+5) + "px monospace";
 	var alpha = size / 200
 	var rows = canvas.height / size;
 	var cols = canvas.width / size;
+	var currentChar;
+	var previousChar;
 
 	//Write the loading ticker
 	function dial() {
-		console.log("Dialing");
+		clearInterval(paintInterval);
 		index = dialIndex % init_message.length;
-		//context.fillStyle = "rgba(0, 37, 77, 0.3)"; //Background color and fadeout speed
 		context.fillStyle = "rgba(90, 37, 77, 0.0)"; //Background color and fadeout speed
 		context.fillRect(0, 0, canvas.width, canvas.height);
-		context.fillStyle = getTextColor();
-		context.font = (size+5) + "px monospace";
-		context.fillText(init_message[index], (canvas.width / 2) - (init_message.length / 2 * size) + (index * size), canvas.height / 3); 
+
+		currentChar = init_message[index];
+		context.fillStyle = "#85D6FF"; //Bright Blue
+		context.fillText(currentChar, (canvas.width / 2) - (init_message.length / 2 * size) + (index * size), canvas.height / 3); 
+		if (index != 0) {
+			previousChar = init_message[index-1];
+			context.fillStyle = getTextColor();
+			context.fillText(previousChar, (canvas.width / 2) - (init_message.length / 2 * size) + (index * size) - size, canvas.height / 3); 
+		}
+
 		dialIndex += 1;
 		if (dialIndex >= init_message.length) {
-			console.log("CLEARING");
 			clearInterval(dialInterval);
+
+			for(var x = 0; x < Math.floor(cols); x++) {
+				lines[x] = Math.floor(Math.random() * rows); 
+				tweets[x] = getString();
+			}
+
+			paintInterval = setInterval(paint, 80);
+		}
+	}
+
+	function paint()
+	{
+		//Background is colored and translucent
+		context.fillStyle = "rgba(0, 37, 77, 0.3)"; //Background color and fadeout speed
+		//context.fillStyle = "rgba(90, 37, 77, 0.0)"; //Background color and fadeout speed
+		context.fillRect(0, 0, canvas.width, canvas.height);
+		
+		context.fillStyle = "#0F0"; //green
+
+		for(var i = 0; i < lines.length; i++) {
+			var tweet = tweets[i]
+			var currentChar = tweet[lines[i] % tweet.length];
+			var previousChar = tweet[(lines[i]-1) % tweet.length];
+
+			context.fillStyle = "#85D6FF"; //Bright Blue
+			context.fillText(currentChar, i*size, (lines[i]*size)+size); //Write newest char illuminated
+			context.fillStyle = getTextColor(); 
+			context.fillText(previousChar, i*size, ((lines[i]-1)*size)+size); //Rewrite previous char in green
+
+			//Randomly stagger resetting the line
+			if(lines[i]*size > canvas.height && Math.random() > restartThreshhold) {
+				lines[i] = 0;
+				tweets[i] = getString();
+			}
+			
+			//incrementing scrolling coordinate
+			lines[i]++;
 		}
 	}
 
 	function getTextColor() {
 		var hex = "ABCDEF".split("");
-		var hue = Math.floor((Math.random() * 100) + 155);
+		var hue = Math.floor((Math.random() * 60) + 195);
 		return "rgb(" + hue + ", " + hue + ", " + hue + ")";
 	}
 
-	function canvasSize(scroll_dir) {
-		if (vertical) {
-			return (scroll_dir) ? cols : rows;
-		} else {
-			return (scroll_dir) ? rows : cols;
+	function getString() {
+		var string = "";
+		var chars = "#!@$%&^*+=1234567890";
+		for (var i = 0; i <= 10; i++) {
+			string += string.concat("", chars[Math.floor(Math.random() * chars.length)]);
 		}
+		return string;
 	}
 
-	dialInterval = setInterval(dial, 150);
+
+	dialInterval = setInterval(dial, 70);
 
 }
