@@ -8,20 +8,22 @@ var restartThreshhold = 0.97;
 
 start = function() {
 	clearInterval(dialInterval);
+	clearInterval(paintInterval);
 	if (!document.getElementById("displayCanvas")) {
 		return; //No need for streaming on this page
 	}
 
 	var dialIndex = 0;    //The current character displayed by dialing animation
 
-	var init_message = "A real-time Twitter visualizer".split("");
+	var init_message = "        A real-time Twitter visualizer        ".split("");
 
 	var canvas = document.getElementById("displayCanvas");
 	var context = canvas.getContext("2d");
 
 	canvas.height = window.innerHeight;
 	canvas.width = window.innerWidth;
-	context.fillStyle = "rgba(90, 37, 77, 1.0)"; //Blank to start
+	context.clearRect(0, 0, canvas.width, canvas.height);
+	console.log("cleared");
 
 	var size = 30;
 	context.font = (size+5) + "px monospace";
@@ -34,10 +36,8 @@ start = function() {
 	//Write the loading ticker
 	function dial() {
 		clearInterval(paintInterval);
-		index = dialIndex % init_message.length;
-		context.fillStyle = "rgba(90, 37, 77, 0.0)"; //Background color and fadeout speed
-		context.fillRect(0, 0, canvas.width, canvas.height);
 
+		index = dialIndex % init_message.length;
 		currentChar = init_message[index];
 		context.fillStyle = "#85D6FF"; //Bright Blue
 		context.fillText(currentChar, (canvas.width / 2) - (init_message.length / 2 * size) + (index * size), canvas.height / 3); 
@@ -60,21 +60,17 @@ start = function() {
 		}
 	}
 
-	function paint()
-	{
+	function paint() {
 		//Background is colored and translucent
 		context.fillStyle = "rgba(0, 37, 77, 0.3)"; //Background color and fadeout speed
-		//context.fillStyle = "rgba(90, 37, 77, 0.0)"; //Background color and fadeout speed
 		context.fillRect(0, 0, canvas.width, canvas.height);
-		
-		context.fillStyle = "#0F0"; //green
 
 		for(var i = 0; i < lines.length; i++) {
 			var tweet = tweets[i]
 			var currentChar = tweet[lines[i] % tweet.length];
 			var previousChar = tweet[(lines[i]-1) % tweet.length];
 
-			context.fillStyle = "#85D6FF"; //Bright Blue
+			context.fillStyle = "rgba(133, 214, 255, 1.0)";
 			context.fillText(currentChar, i*size, (lines[i]*size)+size); //Write newest char illuminated
 			context.fillStyle = getTextColor(); 
 			context.fillText(previousChar, i*size, ((lines[i]-1)*size)+size); //Rewrite previous char in green
@@ -98,10 +94,11 @@ start = function() {
 
 	function getString() {
 		var string = "";
-		var chars = "#!@$%&^*+=1234567890";
+		var chars = "#!@$%&^*+=1234567890XOI";
 		for (var i = 0; i <= 10; i++) {
-			string += string.concat("", chars[Math.floor(Math.random() * chars.length)]);
+			string += chars[Math.floor(Math.random() * chars.length)];
 		}
+		console.log(string);
 		return string;
 	}
 
