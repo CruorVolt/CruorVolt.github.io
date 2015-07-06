@@ -23,7 +23,6 @@ start = function() {
 	canvas.height = window.innerHeight;
 	canvas.width = window.innerWidth;
 	context.clearRect(0, 0, canvas.width, canvas.height);
-	console.log("cleared");
 
 	var size = 30;
 	context.font = (size+5) + "px monospace";
@@ -98,7 +97,6 @@ start = function() {
 		for (var i = 0; i <= 10; i++) {
 			string += chars[Math.floor(Math.random() * chars.length)];
 		}
-		console.log(string);
 		return string;
 	}
 
