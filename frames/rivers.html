@@ -4,57 +4,25 @@
 <div style='text-align:center;'>
 A tool for modeling the growth of river networks over time. 
 <br><br>
-<img src="../img/riverexample1.jpeg" style='width:20%; margin-right:20px;'>
-<img src="../img/riverexample2.jpeg" style='width:20%; margin-left:20px;'>
+<img src="../img/riverexample1.jpeg" style='width:20%; margin-left:10px; margin-right:10px;'>
+<img src="../img/riverexample2.jpeg" style='width:20%; margin-left:10px; margin-right:10px;'>
+<img src="../img/riverexample3.jpeg" style='width:20%; margin-left:10px; margin-right:10px;'>
+<img src="../img/riverexample4.jpeg" style='width:20%; margin-left:10px; margin-right:10px;'>
+<br><br>
+This program implements the process described in:
 </div>
 <br>
-This program implements the process described in:
-<br><br>
 <div style='font-family:serif; margin-left:20px;'>
 R. L. Leheny and S. R. Nagel, "Model for the evolution of river
 networks," Phys. Rev. Lett., vol. 71, pp. 1470-1473, Aug 1993.
 </div>
 <br>
 
-The procedure involves randomly placing water sources on an inclined plane and
-'eroding' material as it flows downward.
-
 <div style='text-align:center;'>
-<img src="../img/riverexample3.jpeg" style='width:20%; margin-right:20px;'>
-<img src="../img/riverexample4.jpeg" style='width:20%; margin-left:20px;'>
-</div>
 
-<div style='text-align:center;'>Program options:</div>
-
-<pre>Topography</pre>
-The regularity of the landscape, or how likely water is to flow around obstacles
-rather than directly along the steepest path.
-
-<pre>Erosion</pre>
-The rate at which water removes material from the landscape. 
-
-<pre>Soil Consistency</pre>
-How stable the landscape is after erosion. Defines the threshhold beyond which
-steep slopes will collapse into more gradual valleys.
-
-Modeling begins with a smooth inclined plane of topographical elevation data and 
-begins a water pathway at a random point on the plane. The water flows to neighboring 
-points, with the probability of moving to a given point i defined as:  
-
-Where E is a topographical constant (modeled in the GUI by the Topography scale) 
-and Δh is the elevation difference between the current point and point i. 
-The probabilities of each of the four neighboring points is converted to a fraction 
-of their sum for their respective percentage probabilities. This equation 
-gives the water a larger proportional probability to travel towards adjacent 
-points of greater downward slope, and restricts the water from flowing 
-to points with higher elevation. After the water has reached the bottom of 
-the plane (the plane wraps to itself horizontally) its path is eroded by 
-reducing the elevation values it has passed over by some defined erosion depth 
-(modeled by the GUI's erosion scale). If the slope between any two points on the 
-new landscape is greater than some defined soil consistency constant the procedure 
-evens the slope between those points to simulate a soil avalanche. 
-A single erosion path will not remove elevation from a single point more than once. 
-
-The placement and erosion procedure can be repeated to produce increasingly complex landscapes.
-
+<a class="block" href="http://sites.google.com/site/brutenorhuman/RiverNetworks_src.zip?attredirects=0&d=1">Source</a>
+<a class="block" href="https://docs.google.com/file/d/0Byb7FYipnlUgaUgxT3c4V0Vsdk0/edit?usp=sharing">Windows .exe (64 bit)</a>
+<br><br>
 Python source code requires numpy and matplotlib libraries.
+
+</div>
