@@ -2,7 +2,7 @@
   "name": "anders",
   "version": "1.0",
   "private": true,
-  "homepage": "https://github.com/CruorVolt/CruorVolt.github.io",
+  "homepage": "https://CruorVolt.github.io",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.2.1",
     "@fortawesome/free-brands-svg-icons": "^6.2.1",
