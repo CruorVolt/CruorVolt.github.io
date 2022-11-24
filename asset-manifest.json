@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/CruorVolt/CruorVolt.github.io/static/css/main.594bfb15.css",
+    "main.js": "/CruorVolt/CruorVolt.github.io/static/js/main.b4fe0929.js",
+    "index.html": "/CruorVolt/CruorVolt.github.io/index.html",
+    "main.594bfb15.css.map": "/CruorVolt/CruorVolt.github.io/static/css/main.594bfb15.css.map",
+    "main.b4fe0929.js.map": "/CruorVolt/CruorVolt.github.io/static/js/main.b4fe0929.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.594bfb15.css",
+    "static/js/main.b4fe0929.js"
+  ]
+}
