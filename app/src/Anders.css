@@ -27,3 +27,17 @@ body {
 .icon:hover {
   color: orange;
 }
+
+.icon.reddit:hover {
+  color: rgb(0, 212, 0);
+}
+
+.hover-pane {
+  height: 200px;
+}
+
+.reddit-box {
+  height: 200px;
+  width: 200px;
+  border-radius: 5px;
+}
