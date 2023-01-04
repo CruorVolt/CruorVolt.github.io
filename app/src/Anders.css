@@ -14,6 +14,12 @@ body {
   color: white;
 }
 
+.app-description {
+  font-size: 13px;
+  padding: 10px;
+  white-space: nowrap;
+}
+
 .font-row {
   display: flex;
   flex-direction: row;
@@ -25,11 +31,43 @@ body {
 }
 
 .icon:hover {
-  color: orange;
+  color: rgb(253, 102, 1);
 }
 
-.icon.reddit:hover {
-  color: rgb(0, 212, 0);
+.icon.reddit:hover, div.reddit {
+  color: rgb(157, 240, 157);
+}
+
+.reddit canvas {
+  border: 2px solid rgb(157, 240, 157);
+}
+
+.icon.github:hover, div.github {
+  color:rgba(218, 159, 253, 0.95);
+}
+
+.github img {
+  border: 2px solid rgba(218, 159, 253, 0.95);
+}
+
+.icon.soundcloud:hover, div.soundcloud {
+  color:rgba(240, 162, 73, 0.95);
+}
+
+.soundcloud img {
+  border:2px solid rgba(240, 162, 73, 0.95);
+}
+
+.icon.life:hover, div.life {
+  color:rgba(129, 223, 226, 0.95);
+}
+
+.life img {
+  border: 2px solid rgba(129, 223, 226, 0.95);
+}
+
+.box img, .box canvas {
+  border-radius: 5px;
 }
 
 .hover-pane {
@@ -38,8 +76,12 @@ body {
   cursor: pointer;
 }
 
-.reddit-box {
+.box {
   height: 200px;
   width: 200px;
   border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: bold;
 }
