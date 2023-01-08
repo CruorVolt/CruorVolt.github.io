@@ -28,7 +28,7 @@ function Anders() {
           <FontAwesomeIcon 
             className='icon reddit' 
             icon={faCarrot} 
-            onClick={() => { window.open('https://github.com/CruorVolt', '_blank'); }} 
+            onClick={() => { window.open('http://striking-shadow-371917.uc.r.appspot.com', '_blank'); }} 
             onMouseEnter={ () => {setHoverPane( 
               <div className='reddit box'>
                 <RedditMatrix/>
