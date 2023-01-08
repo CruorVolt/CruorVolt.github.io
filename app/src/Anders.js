@@ -15,6 +15,11 @@ function Anders() {
 
   const [hoverPane, setHoverPane] = useState(null);
 
+  const openReddit = () => { window.open('http://striking-shadow-371917.uc.r.appspot.com', '_blank'); }; 
+  const openLife = () => { window.open('https://github.com/CruorVolt/life', '_blank'); };
+  const openGithub = () => { window.open('https://github.com/CruorVolt', '_blank'); };
+  const openSoundcloud = () => { window.open('https://soundcloud.com/anders-lundgren-589704197', '_blank'); };
+
   return (
     <div className="bod">
       <div className="header">
@@ -28,9 +33,9 @@ function Anders() {
           <FontAwesomeIcon 
             className='icon reddit' 
             icon={faCarrot} 
-            onClick={() => { window.open('http://striking-shadow-371917.uc.r.appspot.com', '_blank'); }} 
+            onClick={openReddit}
             onMouseEnter={ () => {setHoverPane( 
-              <div className='reddit box'>
+              <div className='reddit box' onClick={openReddit}>
                 <RedditMatrix/>
                 <div className='app-description'> A real-time Reddit visualizer </div>
               </div>
@@ -40,9 +45,9 @@ function Anders() {
           <FontAwesomeIcon 
             className='icon life' 
             icon={faPaperPlane} 
-            onClick={() => { window.open('https://github.com/CruorVolt/life', '_blank'); }} 
+            onClick={openLife}
             onMouseEnter={ () => {setHoverPane( 
-              <div className='life box'>
+              <div className='life box' onClick={openLife}>
                 <img src={gosper} alt='life' height={'200px'}/>
                 <div className='app-description'> Conway's Life in the terminal </div>
               </div>
@@ -52,9 +57,9 @@ function Anders() {
           <FontAwesomeIcon 
             className='icon github' 
             icon={faGithub} 
-            onClick={() => { window.open('https://github.com/CruorVolt', '_blank'); }} 
+            onClick={openGithub}
             onMouseEnter={ () => {setHoverPane( 
-              <div className='github box'>
+              <div className='github box' onClick={openGithub}>
                 <img src={code} alt='github' height={'200px'}/>
                 <div className='app-description'> Other projects </div>
               </div>
@@ -64,9 +69,9 @@ function Anders() {
           <FontAwesomeIcon 
             className='icon soundcloud' 
             icon={faSoundcloud} 
-            onClick={() => { window.open('https://soundcloud.com/anders-lundgren-589704197', '_blank'); }} 
+            onClick={openSoundcloud}
             onMouseEnter={ () => {setHoverPane( 
-              <div className='soundcloud box'>
+              <div className='soundcloud box' onClick={openSoundcloud}>
                 <img src={soundCloud} alt='soundcloud' height={'200px'}/>
                 <div className='app-description'> Music </div>
               </div>
